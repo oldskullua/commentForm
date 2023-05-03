@@ -1,0 +1,15 @@
+<% products.forEach(item=> { %>
+    <a class="card m-2 z-2 text-dark text-decoration-none" href="<%= `/products/${item.id}` %>"
+        style="width: 25rem; height: 16rem">
+        <div class="card-body">
+            <h5 class="card-title"><%= item.name %></h5>
+            <h6 class="card-subtitle"><%= item.price %></h6>
+        </div>
+        <div class="card-footer text-body-secondary d-flex">
+            <div>
+                <i class="bi bi-chat-left-text"></i>
+            </div>
+            <span class="mx-2">125</span>
+        </div>
+    </a>
+<% }); %>

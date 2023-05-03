@@ -3,20 +3,21 @@ const db = require('../db/models');
 
 const router = Router();
 
-router.get('/products', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
-        const products = await db.Product.findAll({
-            limit: req.query.pageSize
+        const products = await db.Product.findAll({ limit: req.query.pageSize });
+        res.render('layout.ejs', {
+            page: 'pages/products.ejs',
+            title: 'Продукція магазину',
+            products: products.map(item => item.dataValues),
         });
-        res.status(200).send(products);
     }
     catch (error) {
         console.error(error.message);
         res.status(500);
     }
 });
-
-router.get('/product/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
         const id = Number.parseInt(req.params.id) 
         if (Number.isNaN(id) || id < 1)
@@ -24,12 +25,13 @@ router.get('/product/:id', async (req, res) => {
                 status: 'Bad Request',
                 reason: 'The `id` shoud be UNSIGNED INTEGER greater than 0'
             });
-        const product = await db.Product.findOne({
-            where: {
-                id,
-            }
+        const product = await db.Product.findOne({ where: { id, } });
+        res.render('layout.ejs', {
+            page: 'pages/product.ejs',
+            title: 'Продукція магазину',
+            product: product.dataValues,
+            commetsHandler: '/loader.js'
         });
-        return res.status(200).send(product);
     }
     catch (error) {
         console.error(error);

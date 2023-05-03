@@ -12,7 +12,7 @@ router.get('/comments', async (req, res) => {
             order: [[req.query.sortBy, req.query.order == 'descending'?'DESC':'ASC']],
             limit: req.query.limit
         })
-        res.status(200).send(comments.map(item => item.dataValues));
+        res.render('partials/comments.ejs', { comments: comments.map(item => item.dataValues) });
     }
     catch (error) {
         console.error(error);
@@ -21,14 +21,15 @@ router.get('/comments', async (req, res) => {
 
 router.post('/comments', async (req, res) => {
     try {
+        const { message, ...other } = req.body;
         const comment = await db.Comment.create({
-            ...req.body,
-           ProductId: req.productId
+            ...other,
+            description: message,
+            ProductId: req.productId
         });
         return res.status(200).send(comment);
     }
     catch (error) {
-        console.error(error.message)
         return res.status(400).send({
             status: 'Bad Request',
             reason: error.message 
