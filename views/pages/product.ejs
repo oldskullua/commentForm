@@ -1,0 +1,72 @@
+<div class="card w-75 m-2 z-2 text-dark text-decoration-none" id="productCard">
+    <div class="card-body">
+        <h5 class="card-title"><%= product.name %></h5>
+        <h6 class="card-subtitle mb-4"><%= product.name %></h6>
+        <p class="card-text"> Такий крутий продукт, бла-бла-бла... Ну іще сміття <br>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. At quis risus sed vulputate odio. Tincidunt lobortis feugiat vivamus at. Risus sed 
+            vulputate odio ut enim blandit volutpat maecenas. Feugiat pretium nibh ipsum consequat.
+        </p>
+    </div>
+</div>
+
+<div class="card w-75 my-2 z-2 text-dark text-decoration-none">
+    <div class="card-body">
+        <h5 class="card-title">Залиште ваш відгук</h5>
+        <form id="comment-form">
+            <div class="row">
+                <div class="col">
+                    <div class="form-floating mb-2">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="John Doe" required>
+                        <label for="name">Name</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-floating mb-2">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="j-doe@example.com" required>
+                        <label for="email">E-mail</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-floating mb-2">
+                        <select class="form-select" id="rating" name="rating" required>
+                            <option selected disabled value=""></option>
+                            <option value="5">5 stars</option>
+                            <option value="4">4 stars</option>
+                            <option value="3">3 stars</option>
+                            <option value="2">2 stars</option>
+                            <option value="1">1 stars</option>
+                        </select>
+                        <label for="rating">Ваша оцінка</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-floating mb-2">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="message" name="message" style="height: 10rem" required></textarea>
+                        <label for="message">Ваш відгук</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <button type="submit" class="btn btn-primary">Надіслати</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="card w-75 my-2 z-2 text-dark text-decoration-none">
+    <div class="card-body">
+        <h5 class="card-title">Відгуки наших покупців про цей товар</h5>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="sortByRating">
+            <label class="form-check-label" for="sortByRating">Сортувати за рейтиногом</label>
+        </div>
+        <ul class="list-group" id="comment-list"></ul>
+    </div>
+</div>
+<script src="<%= commetsHandler %>"></script>

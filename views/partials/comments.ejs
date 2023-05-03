@@ -1,0 +1,25 @@
+<% comments.forEach(item=> { %>
+<li class="list-group-item">
+    <div class="row">
+        <div class="col-1">
+            <p class="display-1"><%= item.rating %></p>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col g-0">
+                    <div class="row text-primary">
+                        <div class="col d-flex align-items-baseline h5">
+                            <p class="mx-2"><%= item.name %></p>
+                            <p class="mx-2 h6"><%= item.email %></p>
+                        </div>
+                        <p class="col"><%= new Date(item.createdAt).toLocaleString(); %></p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <p class="col"> <%= item.description %></p>
+            </div>
+        </div>
+    </div>
+</li>
+<% }); %>
