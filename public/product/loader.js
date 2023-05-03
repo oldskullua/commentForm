@@ -25,9 +25,7 @@
             })
         })
             .then(response => response.json())
-            .then(data => {
-                console.log(data);
-        })
+            .then(data => updateCommentList())
     }
     // Це створює структуру коменту
     function createComment(item) {
@@ -95,13 +93,4 @@
     
     // Загрузка 10 комментів
     updateCommentList();
-    // fetch(commentUrl) 
-    //     .then(response => {
-    //         if (response.status == 200) return response.json()
-    //         throw { status: response.status };
-    //     })
-    //     .then(json => {
-    //         console.log(json);
-    //     })
-    //     .catch(error => console.error);
 })();
