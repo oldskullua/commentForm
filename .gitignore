@@ -6,4 +6,6 @@ tmp/
 temp/
 public/index.html
 public/style.css
-.env
+.development.env
+.production.env
+.test.env
